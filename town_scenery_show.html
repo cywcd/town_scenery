@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<title>小镇风光</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<link href="css/town_scenery.css" rel="stylesheet">
+<link href="css/swiper.min.css" rel="stylesheet">
+<!--[if lt IE 9]>
+    <script src="js/html5.js"></script>
+<![endif]-->
+</head>
+
+<body>
+<section class="con">
+	<article class="conshow">
+    	<a class="back" href="javascript:history.go(-1);"></a>
+        <div class="swiper-container">
+        <div class="swiper-wrapper">
+           <div class="swiper-slide"><img src="images/town_scenery/pro_01.jpg"><p class="show_summary">珠宝小镇位于我国西南边陲—云南省德宏州的芒市机场5公里处，占地面积三百多亩，入驻珠宝商铺千余家，已形成翡翠玉石、毛料公盘、生产加工、批发零售和文化传播为一体的产业链。是目前国内规模最大的综合性珠宝玉石中心，被誉为“世界珠宝第一镇”，“世界珠宝文化之旅第一站”。</p></div>
+           <div class="swiper-slide"><img src="images/town_scenery/pro_01.jpg"><p class="show_summary">珠宝小镇位于我国西南边陲—云南省德宏州的芒市机场5公里处，占地面积三百多亩，入驻珠宝商铺千余家，已形成翡翠玉石、毛料公盘、生产加工、批发零售和文化传播为一体的产业链。是目前国内规模最大的综合性珠宝玉石中心，被誉为“世界珠宝第一镇”，“世界珠宝文化之旅第一站”。</p></div>
+           <div class="swiper-slide"><img src="images/town_scenery/pro_01.jpg"><p class="show_summary">珠宝小镇位于我国西南边陲—云南省德宏州的芒市机场5公里处，占地面积三百多亩，入驻珠宝商铺千余家，已形成翡翠玉石、毛料公盘、生产加工、批发零售和文化传播为一体的产业链。是目前国内规模最大的综合性珠宝玉石中心，被誉为“世界珠宝第一镇”，“世界珠宝文化之旅第一站”。</p></div>
+           <div class="swiper-slide"><img src="images/town_scenery/pro_01.jpg"><p class="show_summary">珠宝小镇位于我国西南边陲—云南省德宏州的芒市机场5公里处，占地面积三百多亩，入驻珠宝商铺千余家，已形成翡翠玉石、毛料公盘、生产加工、批发零售和文化传播为一体的产业链。是目前国内规模最大的综合性珠宝玉石中心，被誉为“世界珠宝第一镇”，“世界珠宝文化之旅第一站”。</p></div>
+           <div class="swiper-slide"><img src="images/town_scenery/pro_01.jpg"><p class="show_summary">珠宝小镇位于我国西南边陲—云南省德宏州的芒市机场5公里处，占地面积三百多亩，入驻珠宝商铺千余家，已形成翡翠玉石、毛料公盘、生产加工、批发零售和文化传播为一体的产业链。是目前国内规模最大的综合性珠宝玉石中心，被誉为“世界珠宝第一镇”，“世界珠宝文化之旅第一站”。</p></div>
+           <div class="swiper-slide"><img src="images/town_scenery/pro_01.jpg"><p class="show_summary">珠宝小镇位于我国西南边陲—云南省德宏州的芒市机场5公里处，占地面积三百多亩，入驻珠宝商铺千余家，已形成翡翠玉石、毛料公盘、生产加工、批发零售和文化传播为一体的产业链。是目前国内规模最大的综合性珠宝玉石中心，被誉为“世界珠宝第一镇”，“世界珠宝文化之旅第一站”。</p></div>
+           <div class="swiper-slide"><img src="images/town_scenery/pro_01.jpg"><p class="show_summary">珠宝小镇位于我国西南边陲—云南省德宏州的芒市机场5公里处，占地面积三百多亩，入驻珠宝商铺千余家，已形成翡翠玉石、毛料公盘、生产加工、批发零售和文化传播为一体的产业链。是目前国内规模最大的综合性珠宝玉石中心，被誉为“世界珠宝第一镇”，“世界珠宝文化之旅第一站”。</p></div>
+        </div>
+        </div>
+        <div class="side_scroll">
+        	<div class="progress">
+            	<div class="progress_bton"></div>
+            </div>
+        </div>
+    </article>	
+</article>
+
+
+</section>
+<script src="js/jquery-1.11.2.min.js"></script>
+<script>
+	;$( function(){
+		$('.swiper-wrapper').click(function(){
+			$(this).find('.show_summary').toggle();
+			$('.back').toggle();
+			})
+		})();
+</script>
+<script src="js/swiper.min.js"></script>
+    <script>	
+    var swiper = new Swiper('.swiper-container',{onInit: function(swiper){
+animate(swiper.activeIndex,swiper.slides.length)
+    },
+	onSlideChangeEnd: function(swiper){
+
+	  animate(swiper.activeIndex,swiper.slides.length)
+    }
+	});	
+	function animate(current,alls){
+		var a=(Number(current)+1)/alls*100;
+		 $(".progress_bton").animate({width:a+"%"},10);
+		}
+    </script>
+</body>
+</html>

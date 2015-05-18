@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<title>小镇风光</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<link href="css/town_scenery.css" rel="stylesheet">
+<!--[if lt IE 9]>
+    <script src="js/html5.js"></script>
+<![endif]-->
+</head>
+
+<body>
+<header class="header">
+	<a id="back" href="javascript:history.go(-1);"></a><h1>小镇风光</h1>
+</header>
+<section class="con">
+	<article class="wrap">
+    <div class="tabs">
+        <a href="##" hidefocus="true" class="active">小镇风光</a>
+        <a href="##" hidefocus="true">主题活动</a>
+        <a href="##" hidefocus="true">精品欣赏</a>
+    </div>    
+    <div class="swiper-container">
+        <div id="mypage" class="swiper-wrapper">
+        <div class="swiper-slide" data-index="1" data-page="1">
+            <div class="content-slide"> 
+            <a href="#"><img src="images/town_scenery/pic_01.jpg"></a>
+            <a href="#"><img src="images/town_scenery/pic_02.jpg"></a>
+            <a href="#"><img src="images/town_scenery/pic_03.jpg"></a>
+          </div>
+          </div>
+        <div class="swiper-slide" data-index="2" data-page="1">
+            <div class="content-slide">
+            <a href="#"><img src="images/town_scenery/pic_03.jpg"></a>
+            <a href="#"><img src="images/town_scenery/pic_04.jpg"></a>
+            <a href="#"><img src="images/town_scenery/pic_02.jpg"></a>
+          </div>
+          </div>
+        <div class="swiper-slide" data-index="3" data-page="1">
+            <div class="content-slide">
+            <a href="#"><img src="images/town_scenery/pic_03.jpg"></a>
+            <a href="#"><img src="images/town_scenery/pic_02.jpg"></a>
+            <a href="#"><img src="images/town_scenery/pic_01.jpg"></a>
+          </div>
+          </div>
+      </div>
+   </div>
+</article>
+</section>
+<script src="js/jquery-1.11.2.min.js"></script>
+<script src="js/tab.swiper.min.js"></script> 
+<script>
+var tabsSwiper = new Swiper('.swiper-container',{
+	speed:500,
+	onSlideChangeStart: function(){
+		$(".tabs .active").removeClass('active');
+		$(".tabs a").eq(tabsSwiper.activeIndex).addClass('active');
+	},onInit: function(swiper){
+      downLoad();
+    }
+	,onSlideChangeEnd: function(swiper){
+		
+      downLoad();
+    }
+});
+
+$(".tabs a").on('touchstart mousedown',function(e){
+	e.preventDefault()
+	$(".tabs .active").removeClass('active');
+	$(this).addClass('active');
+	tabsSwiper.swipeTo($(this).index());
+});
+
+$(".tabs a").click(function(e){
+	e.preventDefault();
+});
+</script>
+<script src="js/dropload.min.js"></script>
+<script>
+// dropload
+function downLoad(){
+ $('.swiper-slide-active').dropload({
+	
+    domDown : {
+        domClass   : 'dropload-down',
+        domRefresh : '<div class="dropload-refresh">↑上拉加载更多</div>',
+        domUpdate  : '<div class="dropload-update">↓释放加载</div>',
+        domLoad    : '<div class="dropload-load"><span class="loading"></span>加载中...</div>'
+    },
+    loadDownFn : function(me){
+		
+		var selector = $('.swiper-slide-active');
+		// 标识哪个选项卡
+		var num  = selector.data('index');
+		// 第几次拉取数据
+		var page = selector.data('page');
+		
+        $.ajax({	
+            type: 'GET',
+            url: 'http://192.168.88.43/json/update.json',
+            dataType: 'json',
+            success: function(data){
+				// 累加拉取次数
+				selector.data('page',page+1);
+
+                var result = '';
+                for(var i = 0; i < data.lists.length; i++){
+                    result +=   '<a href="'+data.lists[i].link+'" >'
+                                    +'<img src="'+data.lists[i].pic+'" alt="">'
+									+'</a>';
+                }
+                // 可设置延迟
+                setTimeout(function(){
+                    selector.find('.content-slide').append(result);
+                    me.resetload();
+                },1000);
+            },
+            error: function(xhr, type){
+                alert('Ajax error!');
+                me.resetload();
+            }
+        });
+    }
+});
+}
+</script>
+</body>
+</html>

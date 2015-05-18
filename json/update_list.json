@@ -1,0 +1,24 @@
+{
+    "lists":[
+        {
+            "pic":"http://192.168.88.43/images/town_scenery/img_00.jpg",
+			"link":"http://www.zhubaotown.com/mobile/"
+        },
+        {
+            "pic":"http://192.168.88.43/images/town_scenery/img_02.jpg",
+			"link":"http://www.zhubaotown.com/mobile/"
+        },
+		 {
+            "pic":"http://192.168.88.43/images/town_scenery/img_02.jpg",
+			"link":"http://www.zhubaotown.com/mobile/"
+        },
+		 {
+            "pic":"http://192.168.88.43/images/town_scenery/img_02.jpg",
+			"link":"http://www.zhubaotown.com/mobile/"
+        },
+		 {
+            "pic":"http://192.168.88.43/images/town_scenery/img_last.jpg",
+			"link":"http://www.zhubaotown.com/mobile/"
+        }
+    ]
+}
